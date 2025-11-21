@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const redirectTitle = 'Weblate';
-const redirectUrl = 'https://weblate.pstream.org/projects/p-stream/p-stream';
+const redirectUrl = 'https://weblate.pstream.mov/projects/p-stream/p-stream';
 
 export default function WeblateRedirect() {
   const [countdown, setCountdown] = useState(5);
