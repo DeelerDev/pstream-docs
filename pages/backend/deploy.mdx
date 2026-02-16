@@ -8,64 +8,7 @@ The only officially recognized hosting method is through Docker (or similar cont
 
 For configuration, check out the [configuration reference](./configuration.mdx).
 
-## Method 1 - Cloudflare Deployment (Free + Easy)
-
-**Prerequisites**
-
-- A [Cloudflare](https://cloudflare.com) account
-- A [GitHub](https://github.com) account
-
-<Steps>
-  <Steps.Step>
-    Create a Cloudflare Worker for the backend In the [Cloudflare
-    Dashboard](https://dash.cloudflare.com/) go to the sidebar, then click
-    "Compute & AI" > "Workers and Pages"
-  </Steps.Step>
-  <Steps.Step>
-    Select "Create application" then click "Continue with GitHub"
-  </Steps.Step>
-  <Steps.Step>
-    If needed, link your GitHub account to your Cloudflare account.
-  </Steps.Step>
-  <Steps.Step>
-    Go to the backend [repository](https://github.com/p-stream/backend) click
-    Star, to Star it :P then Fork the project by clicking Fork, then Create
-    Fork.
-  </Steps.Step>
-  <Steps.Step>
-    In the Cloudflare dashboard select the GitHub repository you set for the
-    backend, it should set the build command as `npm run build` and deploy
-    command as `node .output/server/index.mjs`
-  </Steps.Step>
-  <Steps.Step>
-    Backend uses PostgreSQL as our database, so you need somewhere to host. I
-    personally recommend [Neon](https://neon.com/) as they have a perfectly fine
-    free tier. For larger deployments, it can be quite expensive, so have a
-    backup strategy if you get a lot of users.
-  </Steps.Step>
-  <Steps.Step>
-    In the Neon dashboard click create project, give it a name, then click
-    Connect to your Database. It should give you a line like this: ``` psql
-    'postgresql://neondb_owner:RANDOMSTUFFHERE@MORERANDOMSTUFF.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
-    ``` Copy the url including the `postgresql://` for the next step.
-  </Steps.Step>
-  <Steps.Step>
-    Set your Environment Variables. In the Cloudflare dashboard, go to your
-    worker, go to settings, then click "Configure API token and other runtime
-    variables" Now set your variables:
-    
-     - CRYPTO_SECRET: Generate a random 32
-    character string and set that as the value 
-    - DATABASE_URL: The long
-    postgres:// string from earlier.
-    - META_NAME: Whatever you want the name to be, users will see it when they sign up
-    - META_DESCRIPTION: The description for your instance
-
-  </Steps.Step>
-  <Steps.Step>Now you should be done! Have fun with your new backend, and if you would like, [Star Backend on GitHub](https://github.com/p-stream/backend)</Steps.Step>
-</Steps>
-
-## Method 2 - Docker Deployment
+## Method 1 - Docker Deployment
 
 This method provides a straightforward setup with minimal configuration. For more extensive customization, see the [Configuration Reference](./configuration.mdx).
 
@@ -124,7 +67,7 @@ This method provides a straightforward setup with minimal configuration. For mor
 
 Your backend should be accessible on `(YourPrivateIP):80`. To share it outside your local network, you'll need to configure port forwarding or cloudflared tunnel.
 
-## Method 3 - Railway (Easy)
+## Method 2 - Railway (Easy)
 
 Railway offers a 30-day free trial that includes a one-time $5 credit. After the trial, you receive $1 in usage credits for free each month.
 
